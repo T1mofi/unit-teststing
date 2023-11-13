@@ -8,10 +8,12 @@
 import Foundation
 
 struct Product {
+    var name: String
     var cost: Int
 }
 
 struct Coupon {
+    var code: String
     var discountPercentage: Double
 }
 

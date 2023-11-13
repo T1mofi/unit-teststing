@@ -11,8 +11,8 @@ import XCTest
 class PriceCalculatorTests: XCTestCase {
     func testPriceCalculationWithoutCoupon() {
         let products = [
-            Product(cost: 25),
-            Product(cost: 4800)
+            Product(name: "Lubricant", cost: 25),
+            Product(name: "Fuel pump", cost: 4800)
         ]
 
         let result = PriceCalculator.calculateFinalPrice(for: products)
@@ -22,10 +22,10 @@ class PriceCalculatorTests: XCTestCase {
 
     func testPriceCalculationWithCoupon() {
         let products = [
-            Product(cost: 200),
-            Product(cost: 4800)
+            Product(name: "Breaking pad", cost: 200),
+            Product(name: "Fuel pump", cost: 4800)
         ]
-        let coupon = Coupon(discountPercentage: 3.5)
+        let coupon = Coupon(code: "VSVLAS", discountPercentage: 3.5)
 
         let result = PriceCalculator.calculateFinalPrice(for: products, with: coupon)
 
