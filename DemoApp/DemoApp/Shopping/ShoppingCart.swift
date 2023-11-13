@@ -28,4 +28,10 @@ class ShoppingCart {
     func apply(_ coupon: Coupon) {
         self.coupon = coupon
     }
+
+    func startCheckout() {
+        let finalPrice = PriceCalculator.calculateFinalPrice(for: products, with: coupon)
+
+        Router.shared.openCheckoutPage(forProducts: products, finalPrice: finalPrice)
+    }
 }
