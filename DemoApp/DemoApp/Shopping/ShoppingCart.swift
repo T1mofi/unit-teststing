@@ -28,19 +28,4 @@ class ShoppingCart {
     func apply(_ coupon: Coupon) {
         self.coupon = coupon
     }
-
-    func startCheckout() {
-        var finalPrice = products.reduce(0) { price, product in
-            return price + product.cost
-        }
-
-        if let coupon = coupon {
-            let multiplier = coupon.discountPercentage / 100
-            let discount = Double(finalPrice) * multiplier
-            finalPrice -= Int(discount)
-        }
-
-        Router.shared.openCheckoutPage(forProducts: products,
-                                       finalPrice: finalPrice)
-    }
 }

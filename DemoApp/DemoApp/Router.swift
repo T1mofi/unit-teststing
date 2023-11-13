@@ -12,6 +12,6 @@ class Router {
 
     func openCheckoutPage(forProducts: [Product],
                           finalPrice: Int) {
-        
+        // show checkout page
     }
 }
