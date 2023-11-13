@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Product {
+struct Product: Equatable {
     var name: String
     var cost: Int
 }
@@ -22,6 +22,11 @@ class ShoppingCart {
 
     private var products = [Product]()
     private var coupon: Coupon?
+    private var checkoutPageOpener: CheckoutPageOpener
+
+    init(checkoutPageOpener: CheckoutPageOpener = Router.shared) {
+        self.checkoutPageOpener = checkoutPageOpener
+    }
 
     func add(_ product: Product) {
         products.append(product)
@@ -33,7 +38,6 @@ class ShoppingCart {
 
     func startCheckout() {
         let finalPrice = PriceCalculator.calculateFinalPrice(for: products, with: coupon)
-
-        Router.shared.openCheckoutPage(forProducts: products, finalPrice: finalPrice)
+        checkoutPageOpener.openCheckoutPage(for: products, finalPrice: finalPrice)
     }
 }

@@ -7,10 +7,10 @@
 
 import Foundation
 
-class Router {
+class Router: CheckoutPageOpener {
     static let shared = Router()
 
-    func openCheckoutPage(forProducts: [Product],
+    func openCheckoutPage(for products: [Product],
                           finalPrice: Int) {
         // show checkout page
     }
